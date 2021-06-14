@@ -24,13 +24,14 @@ class TestCase:
             self.prep()
             print(f'TestCase "{self.name}" №{self.tc_id}: этап выполнения')
             self.run()
+            msg = f'TestCase №{self.tc_id}: OK'
         except Exception as err:
             print(err)
-        else:
+            msg = f'TestCase №{self.tc_id}: Failed'
+        finally:   
             print(f'TestCase "{self.name}" №{self.tc_id}: этап завершения')
             self.clean_up()
-            return f"TestCase №{self.tc_id}: OK"
-        return f"TestCase №{self.tc_id}: Failed"
+            return msg
 
 
 class TestCase1(TestCase):
